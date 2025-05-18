@@ -16,7 +16,7 @@ class MLPModel(nn.Module):
         self.embedding_size = embedding_size
         self.hidden_dim = hidden_dim
 
-        self.user_embedding = nn.Embedding(num_embeddings=self.num_users, embedding_dim = self.embedding_size)
+        self.user_embedding = nn.Embedding(num_embeddings=self.num_users, embedding_dim=self.embedding_size)
         self.movie_embedding = nn.Embedding(num_embeddings=self.num_movies, embedding_dim=self.embedding_size)
 
         self.lin1 = nn.Linear(2 * self.embedding_size, self.hidden_dim)
@@ -27,6 +27,7 @@ class MLPModel(nn.Module):
         self.relu = nn.ReLU()
     
     def forward(self, users, movies):
+        #print(max(movies), max(users))
         user_embed = self.user_embedding(users)
         movie_embed = self.movie_embedding(movies)
 
